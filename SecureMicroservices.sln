@@ -3,9 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{15387EFC-6823-495F-B059-CC774CF34B94}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{EE3A03A3-3CA1-486D-A498-FC97204A85FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Api", "Microservices\Movies.Api\Movies.Api.csproj", "{11E8F62E-DDFB-4334-9D5E-77ECB102D249}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11E8F62E-DDFB-4334-9D5E-77ECB102D249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11E8F62E-DDFB-4334-9D5E-77ECB102D249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11E8F62E-DDFB-4334-9D5E-77ECB102D249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11E8F62E-DDFB-4334-9D5E-77ECB102D249}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EE3A03A3-3CA1-486D-A498-FC97204A85FF} = {15387EFC-6823-495F-B059-CC774CF34B94}
+		{11E8F62E-DDFB-4334-9D5E-77ECB102D249} = {EE3A03A3-3CA1-486D-A498-FC97204A85FF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A3606019-3AEB-4D78-98FC-00FB1B3C9728}
