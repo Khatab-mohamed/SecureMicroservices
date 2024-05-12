@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Api", "Microservices\Movies.Api\Movies.Api.csproj", "{11E8F62E-DDFB-4334-9D5E-77ECB102D249}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentiryServer", "IdentiryServer", "{705AC9F7-1F74-445B-9E0A-36344EF626A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "Microservices\IdentityServer\IdentityServer.csproj", "{5E283B7D-C115-467B-A2CD-69AAC8D1983D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,10 @@ Global
 		{11E8F62E-DDFB-4334-9D5E-77ECB102D249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11E8F62E-DDFB-4334-9D5E-77ECB102D249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11E8F62E-DDFB-4334-9D5E-77ECB102D249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E283B7D-C115-467B-A2CD-69AAC8D1983D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E283B7D-C115-467B-A2CD-69AAC8D1983D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E283B7D-C115-467B-A2CD-69AAC8D1983D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E283B7D-C115-467B-A2CD-69AAC8D1983D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,6 +34,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EE3A03A3-3CA1-486D-A498-FC97204A85FF} = {15387EFC-6823-495F-B059-CC774CF34B94}
 		{11E8F62E-DDFB-4334-9D5E-77ECB102D249} = {EE3A03A3-3CA1-486D-A498-FC97204A85FF}
+		{705AC9F7-1F74-445B-9E0A-36344EF626A3} = {15387EFC-6823-495F-B059-CC774CF34B94}
+		{5E283B7D-C115-467B-A2CD-69AAC8D1983D} = {705AC9F7-1F74-445B-9E0A-36344EF626A3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A3606019-3AEB-4D78-98FC-00FB1B3C9728}
