@@ -1,31 +1,37 @@
 using IdentityServer;
-using IdentityServer4.Models;
-using IdentityServer4.Test;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddIdentityServer()
     .AddInMemoryClients(Config.Clients) // Ensure these have valid configurations
-    //.AddInMemoryIdentityResources(Config.IdentityResources)
+    .AddInMemoryIdentityResources(Config.IdentityResources)
     //.AddInMemoryApiResources(Config.ApiResources)
     .AddInMemoryApiScopes(Config.ApiScopes)
-    //.AddTestUsers(Config.TestUsers)
+    .AddTestUsers(Config.TestUsers)
     .AddDeveloperSigningCredential();
 
 var app = builder.Build();
 
-// Use HTTPS redirection
-app.UseHttpsRedirection();
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
 
-// Add UseIdentityServer
-app.UseIdentityServer();
+app.UseStaticFiles();
 
-// Add routing and endpoints (if using)
 app.UseRouting();
 
+app.UseIdentityServer();  // Ensure this is before UseAuthorization
+
+app.UseAuthorization();   // Ensure this is after UseRouting and before UseEndpoints
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+});
 
 app.Run();
