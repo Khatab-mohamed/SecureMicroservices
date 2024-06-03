@@ -47,7 +47,10 @@ public class Config
             {
                   IdentityServerConstants.StandardScopes.OpenId,
                   IdentityServerConstants.StandardScopes.Profile,
-                  "moviesAPI"
+                  IdentityServerConstants.StandardScopes.Email,
+                  IdentityServerConstants.StandardScopes.Address,
+                  "moviesAPI",
+                  "roles"
             }
         }
     };
@@ -72,10 +75,15 @@ public class Config
     /// Defines all the data identity resources.
     /// </summary>
     public static IEnumerable<IdentityResource> IdentityResources => 
-        new IdentityResource[] 
+        new IdentityResource[]
         {
             new IdentityResources.OpenId(),
             new IdentityResources.Profile(),
+            new IdentityResources.Email(),
+            new IdentityResources.Address(),
+            new IdentityResource("roles",
+                                 "your role(s)",
+                                 new List<string>(){"role"})
         };
 
     /// <summary>
