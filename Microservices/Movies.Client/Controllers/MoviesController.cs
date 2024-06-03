@@ -23,6 +23,8 @@ namespace Movies.Client.Controllers
         // GET: Movies
 
         // GET: Movies
+        [Authorize(Roles ="admin")]
+
         public async Task<IActionResult> Index() 
         {
              await LogTokenAndClaims();
