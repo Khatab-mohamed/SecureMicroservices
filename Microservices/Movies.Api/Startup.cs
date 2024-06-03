@@ -16,6 +16,7 @@ public class Startup
     {
         services.AddDbContext<MoviesApiContext>(options =>
             options.UseInMemoryDatabase("MoviesDb"));
+
         services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {
@@ -27,9 +28,9 @@ public class Startup
             });
         services.AddAuthorization(options =>
         {
-            options.AddPolicy("ClientPloicy",
+            options.AddPolicy("ClientIdPolicy",
                 policy => 
-                policy.RequireClaim("client_id", "moviesClient"));
+                policy.RequireClaim("client_id", "moviesClient","movies_mvc_client"));
         });
         // Add controllers
         services.AddControllers();

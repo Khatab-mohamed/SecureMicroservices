@@ -1,5 +1,4 @@
-﻿using IdentityModel.Client;
-using Microsoft.Net.Http.Headers;
+﻿using Microsoft.Net.Http.Headers;
 using Movies.Client.HttpHandlers;
 
 namespace Movies.Client.Extensions;
@@ -27,15 +26,14 @@ public static class HttpClientsExtensions
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
         });
-
-        services.AddSingleton(new ClientCredentialsTokenRequest
-        {
-            ClientId = "moviesClient",
-            ClientSecret = "secret",
-            Scope = "moviesAPI",
-            Address = "https://localhost:5005/connect/token"
-        });
-
+        services.AddHttpContextAccessor(); // we accessing the token using this 
+        /*   services.AddSingleton(new ClientCredentialsTokenRequest
+           {
+               ClientId = "moviesClient",
+               ClientSecret = "secret",
+               Scope = "moviesAPI",
+               Address = "https://localhost:5005/connect/token"
+           });*/
         #endregion
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Movies.Api.Data;
@@ -14,7 +8,7 @@ namespace Movies.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize("ClientPloicy")]
+    [Authorize("ClientIdPolicy")]
     public class MoviesController : ControllerBase
     {
         private readonly MoviesApiContext _context;
@@ -28,10 +22,10 @@ namespace Movies.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Movie>>> GetMovie()
         {
-          if (_context.Movies == null)
-          {
-              return NotFound();
-          }
+            if (_context.Movies == null)
+            {
+                return NotFound();
+            }
             return await _context.Movies.ToListAsync();
         }
 
@@ -39,10 +33,10 @@ namespace Movies.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Movie>> GetMovie(int id)
         {
-          if (_context.Movies == null)
-          {
-              return NotFound();
-          }
+            if (_context.Movies == null)
+            {
+                return NotFound();
+            }
             var movie = await _context.Movies.FindAsync(id);
 
             if (movie == null)
@@ -89,10 +83,10 @@ namespace Movies.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Movie>> PostMovie(Movie movie)
         {
-          if (_context.Movies == null)
-          {
-              return Problem("Entity set 'MoviesApiContext.Movie'  is null.");
-          }
+            if (_context.Movies == null)
+            {
+                return Problem("Entity set 'MoviesApiContext.Movie'  is null.");
+            }
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
 

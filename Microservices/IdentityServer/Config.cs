@@ -14,7 +14,7 @@ public class Config
     /// </summary>
     public static IEnumerable<Client> Clients => new Client[]
     {
-        new() {
+       /* new() {
             ClientId ="moviesClient",
             AllowedGrantTypes = GrantTypes.ClientCredentials,
             ClientSecrets =
@@ -23,11 +23,12 @@ public class Config
 
             },
             AllowedScopes={"moviesAPI"}
-        },
+        },*/
           new() {
             ClientId ="movies_mvc_client",
             ClientName="Movies MVC Web App",
-            AllowedGrantTypes = GrantTypes.Code,
+            AllowedGrantTypes = GrantTypes.Hybrid,
+            RequirePkce = false,
             AllowRememberConsent = false,
             RedirectUris= new List<string>()
             {
@@ -45,7 +46,8 @@ public class Config
             AllowedScopes =
             {
                   IdentityServerConstants.StandardScopes.OpenId,
-                  IdentityServerConstants.StandardScopes.Profile
+                  IdentityServerConstants.StandardScopes.Profile,
+                  "moviesAPI"
             }
         }
     };

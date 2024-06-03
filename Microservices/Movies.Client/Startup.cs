@@ -31,9 +31,10 @@ public class Startup
             options.Authority = "https://localhost:5005";
             options.ClientId = "movies_mvc_client";
             options.ClientSecret = "secret";
-            options.ResponseType = "code";
+            options.ResponseType = "code id_token";
             options.Scope.Add("openid");
             options.Scope.Add("profile");
+            options.Scope.Add("moviesAPI");
             options.SaveTokens = true;
             options.GetClaimsFromUserInfoEndpoint = true;
         });
