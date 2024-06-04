@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -16,7 +16,18 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        var authenticationProviderKy = "IdentityApiKey";
+        services.AddAuthentication()
+            .AddJwtBearer(authenticationProviderKy, x =>
+            {
+                x.Authority = "https://localhost:5005";
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateAudience = false,
+                };
+            });
         services.AddOcelot();
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -28,7 +39,7 @@ public class Startup
         }
 
         app.UseRouting();
-        
+
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
