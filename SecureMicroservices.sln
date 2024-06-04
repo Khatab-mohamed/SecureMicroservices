@@ -13,7 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentiryServer", "IdentiryS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "Microservices\IdentityServer\IdentityServer.csproj", "{5E283B7D-C115-467B-A2CD-69AAC8D1983D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Client", "Microservices\Movies.Client\Movies.Client.csproj", "{0FE0173B-E861-4F6B-AF72-ED76506B82D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Movies.Client", "Microservices\Movies.Client\Movies.Client.csproj", "{0FE0173B-E861-4F6B-AF72-ED76506B82D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{8336AC90-A4F3-40FE-B309-8FFEBF770336}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.Ocelot", "Gateways\Gateway.Ocelot\Gateway.Ocelot.csproj", "{ABBA65CC-144F-4C47-9D20-300A7EF0FACD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,10 @@ Global
 		{0FE0173B-E861-4F6B-AF72-ED76506B82D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FE0173B-E861-4F6B-AF72-ED76506B82D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FE0173B-E861-4F6B-AF72-ED76506B82D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABBA65CC-144F-4C47-9D20-300A7EF0FACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABBA65CC-144F-4C47-9D20-300A7EF0FACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABBA65CC-144F-4C47-9D20-300A7EF0FACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABBA65CC-144F-4C47-9D20-300A7EF0FACD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +51,8 @@ Global
 		{705AC9F7-1F74-445B-9E0A-36344EF626A3} = {15387EFC-6823-495F-B059-CC774CF34B94}
 		{5E283B7D-C115-467B-A2CD-69AAC8D1983D} = {705AC9F7-1F74-445B-9E0A-36344EF626A3}
 		{0FE0173B-E861-4F6B-AF72-ED76506B82D5} = {EE3A03A3-3CA1-486D-A498-FC97204A85FF}
+		{8336AC90-A4F3-40FE-B309-8FFEBF770336} = {15387EFC-6823-495F-B059-CC774CF34B94}
+		{ABBA65CC-144F-4C47-9D20-300A7EF0FACD} = {8336AC90-A4F3-40FE-B309-8FFEBF770336}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A3606019-3AEB-4D78-98FC-00FB1B3C9728}
