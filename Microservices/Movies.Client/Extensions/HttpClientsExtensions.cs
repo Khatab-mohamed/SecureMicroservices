@@ -8,14 +8,20 @@ public static class HttpClientsExtensions
     public static void AddHttpClients(this IServiceCollection services)
     {
         #region Movies
-
-        services.AddHttpClient("MovieAPIClient", client =>
+        // Api
+        /*services.AddHttpClient("MovieAPIClient", client =>
         {
             client.BaseAddress = new Uri("https://localhost:5001/");
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
+        }).AddHttpMessageHandler<AuthenticationDelegatingHandler>();*/
+        // Gateway
+        services.AddHttpClient("MovieAPIClient", client =>
+        {
+            client.BaseAddress = new Uri("https://localhost:5010/");
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
         }).AddHttpMessageHandler<AuthenticationDelegatingHandler>();
-
         #endregion
 
         #region IS4
