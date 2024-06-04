@@ -23,7 +23,6 @@ namespace Movies.Client.Controllers
         // GET: Movies
 
         // GET: Movies
-        [Authorize(Roles ="admin")]
 
         public async Task<IActionResult> Index() 
         {
@@ -42,7 +41,12 @@ namespace Movies.Client.Controllers
             }
 
         }
-        
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> OnlyAdmin()
+        {
+            var userInfo = await _movieApiService.GetUserInfo();
+            return View(userInfo);
+        } 
         public async Task LogOut()
         {
           await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

@@ -28,7 +28,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index">Movies</a>
                         </li>
-                        @if (User.IsInRole("admin "))
+                        @if (User.IsInRole("admin"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link align-text-bottom" asp-area="" asp-controller="Movies" asp-action="OnlyAdmin">Only Admin Page</a>

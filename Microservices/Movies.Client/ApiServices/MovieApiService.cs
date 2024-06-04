@@ -1,4 +1,7 @@
-﻿using Movies.Client.Models;
+﻿using IdentityModel.Client;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Movies.Client.Models;
 using Newtonsoft.Json;
 
 namespace Movies.Client.ApiServices;
@@ -6,10 +9,12 @@ namespace Movies.Client.ApiServices;
 public class MovieApiService : IMovieApiService
 {
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public MovieApiService(IHttpClientFactory httpClientFactory)
+    public MovieApiService(IHttpClientFactory httpClientFactory, IHttpContextAccessor httpContextAccessor)
     {
         _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+        _httpContextAccessor = httpContextAccessor;
     }
 
     // 1- Get Token From IS4 
@@ -53,5 +58,31 @@ public class MovieApiService : IMovieApiService
     public Task<Movie> Update(Movie movie)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<UserInfoViewModel> GetUserInfo()
+    {
+        var idpClient = _httpClientFactory.CreateClient("IDPClient");
+        var metaDataResponse = await idpClient.GetDiscoveryDocumentAsync();
+        if (metaDataResponse.IsError)
+        
+            throw new HttpRequestException("Something Went Wrong While Requesting The Access Token");
+
+        var accessToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
+        var userInfoResponse = await idpClient.GetUserInfoAsync(
+            new UserInfoRequest
+            {
+                Address= metaDataResponse.UserInfoEndpoint,
+                Token = accessToken
+            });
+        if (userInfoResponse.IsError)
+            throw new HttpRequestException("Something Went Wrong While User Info");
+        var userInfoDictionary = new Dictionary<string, string>();
+        foreach (var claim in userInfoResponse.Claims)
+        {
+            userInfoDictionary.Add(claim.Type,claim.Value);
+        }
+        var userInfoViewModel = new UserInfoViewModel(userInfoDictionary);
+        return userInfoViewModel;
     }
 }
